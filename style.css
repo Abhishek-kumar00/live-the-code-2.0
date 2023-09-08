@@ -3,77 +3,86 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  background:rgb(112.520718,44.062154,249.437846);
-  display:flex;
+
+body {
+  background: rgb(112, 44, 249);
+  display: flex;
   justify-content: center;
 }
-.butn-box{
+
+.butn-box {
   width: 250px;
   margin: 30px auto;
   position: relative;
   border-radius: 40px;
   background: #fff;
-  
 }
-.toggel-btn{
+
+.toggel-btn {
   padding: 10px;
   cursor: pointer;
   background: transparent;
   border: 0;
   outline: none;
-  position:relative;
+  position: relative;
   text-align: center;
   z-index: 2;
   color: #000;
-  
 }
-#btn{
-  left:0;
-  top:0;
+
+#btn {
+  left: 0;
+  top: 0;
   position: absolute;
   width: 110px;
   height: 100%;
-  background:#0c52a9;
+  background: #0c52a9;
   border-radius: 30px;
   transition: 1s;
   z-index: 1;
   width: 55px;
-
-
 }
-.content{
-  width:100%;
+
+.content {
+  width: 100%;
   max-width: 540px;
   background: #fff;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
   border-radius: 10px;
 }
+
 .container {
   width: 100%;
   height: 100vh;
-  /* background: linear-gradient(135deg, #153677, #4e085f); */
   padding: 10px;
 }
-.todo-app {
+
+.todo-app,
+.timer-container {
   width: 100%;
   max-width: 540px;
   background: #fff;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
   border-radius: 10px;
+  display: none; /* Initially hide both the to-do list and timer */
 }
-.todo-app h2 {
+
+.todo-app h2,
+.timer-container h2 {
   color: #002765;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
-.todo-app h2 img {
+
+.todo-app h2 img,
+.timer-container h2 img {
   width: 30px;
   margin-left: 10px;
 }
+
 .row {
   display: flex;
   align-items: center;
@@ -83,14 +92,16 @@ body{
   padding-left: 20px;
   margin-bottom: 25px;
 }
+
 input {
   flex: 1;
   border: none;
   outline: none;
   background: transparent;
   padding: 10px;
-  font-weight: 14px;
+  font-size: 14px;
 }
+
 button {
   font-size: 16px;
   padding: 16px 50px;
@@ -101,6 +112,7 @@ button {
   color: #fff;
   cursor: pointer;
 }
+
 ul li {
   list-style: none;
   font-size: 17px;
@@ -109,25 +121,29 @@ ul li {
   cursor: pointer;
   position: relative;
 }
+
 ul li::before {
   content: "";
   position: absolute;
   height: 28px;
   width: 28px;
   border-radius: 50px;
-  background-image: url(https://cdn3.iconfinder.com/data/icons/arrows-160/96/uncheckedV_circle-512.png);
+  background-image: url('https://cdn3.iconfinder.com/data/icons/arrows-160/96/uncheckedV_circle-512.png');
   background-size: cover;
   background-position: center;
   top: 12px;
   left: 8px;
 }
+
 ul li.checked {
   text-decoration: line-through;
   color: #555;
 }
+
 ul li.checked::before {
-  background-image: url(https://png.pngtree.com/element_our/sm/20180515/sm_5afb099b4844b.jpg);
+  background-image: url('https://png.pngtree.com/element_our/sm/20180515/sm_5afb099b4844b.jpg');
 }
+
 ul li span {
   position: absolute;
   right: 0;
@@ -140,6 +156,23 @@ ul li span {
   text-align: center;
   border-radius: 50px;
 }
+
 ul li span:hover {
   background: #edeef0;
 }
+#timer {
+  text-align: center; /* Center the timer display */
+  font-weight: bold; /* Make the timer display bold */
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-top: 50px;
+}
+#timer-text {
+  text-align: center; /* Center the timer text */
+  font-weight: bold; /* Make the timer text bold */
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-top: 50px;
+}
+#start-button{
+  margin-top: 90px;
+}
+

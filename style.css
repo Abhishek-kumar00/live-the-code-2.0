@@ -5,20 +5,26 @@
 }
 
 body {
-  background: rgb(112, 44, 249);
+  background: rgb(32, 31, 31);
   display: flex;
   justify-content: center;
 }
 
+/* Your existing CSS */
+
 .butn-box {
-  width: 250px;
+  width: 400px; /* Adjust width for better symmetry */
   margin: 30px auto;
   position: relative;
   border-radius: 40px;
-  background: #fff;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between; /* Distribute buttons evenly */
+  align-items: center; /* Vertically center the buttons and indicator */
 }
 
 .toggel-btn {
+  flex: 1; /* Distribute buttons evenly */
   padding: 10px;
   cursor: pointer;
   background: transparent;
@@ -28,20 +34,21 @@ body {
   text-align: center;
   z-index: 2;
   color: #000;
+  border-radius: 0; /* Remove border radius for a more symmetric look */
+  transition: background-color 0.3s; /* Add transition for a smooth effect */
 }
 
 #btn {
-  left: 0;
-  top: 0;
   position: absolute;
-  width: 110px;
+  top: 0;
   height: 100%;
-  background: #0c52a9;
-  border-radius: 30px;
-  transition: 1s;
+  width: 120px; /* Adjust width for better symmetry */
+  background: #097383;
+  border-radius: 40px; /* Match the border radius of the button container */
+  transition: 0.3s;
   z-index: 1;
-  width: 55px;
 }
+
 
 .content {
   width: 100%;

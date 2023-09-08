@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-list</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="form-box">
+        <div class="butn-box">
+            <div id="btn"></div>
+            <button type="button" class="toggel-btn" onclick="leftClick()">To Do</button>
+            <button type="button" class="toggel-btn" onclick="midClick()">Timer</button>
+            <button type="button" class="toggel-btn" onclick="rightClick()">Journal</button>
+        </div>
+        <div class="content" id="todoListContent">
+            <h2>To-Do List <img src="./icon.png" alt="icons"></h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your task">
+                <button id="addbtn">Add</button>
+            </div>
+            <ul id="list-content">
+                <li class="checked">Task 1</li>
+                <li >Task 2</li>
+                <li>Task 3</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+
+    
+</body>
+</html>

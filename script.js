@@ -1,69 +1,102 @@
-var btn=document.getElementById('btn');
+var btn = document.getElementById('btn');
 var todoApp = document.querySelector('.todo-app');
 var timerContainer = document.getElementById('timer-container');
 var timerDisplay = document.getElementById('timer');
-var startButton = document.getElementById('start-button');
-var stopButton = document.getElementById('stop-button');
-var timerInterval;
-var isTimerRunning = false;
-function leftClick(){
-    btn.style.left=0;
-    showTodo();
+var countdownInput = document.getElementById('countdown-input');
+var startCountdownButton = document.getElementById('start-countdown-button');
+var stopCountdownButton = document.getElementById('stop-countdown-button');
+var resetCountdownButton = document.getElementById('reset-countdown-button');
+var countdownInterval;
+var isCountdownRunning = false;
 
+function leftClick() {
+  btn.style.left = 0;
+  showTodo();
+}
 
+function midClick() {
+  btn.style.left = '65px';
+  showTimer();
 }
-function midClick(){
-    btn.style.left='65px';
-    showTimer();
-  
+
+function rightClick() {
+  btn.style.left = '140px';
 }
-function rightClick(){
-    btn.style.left='140px';
-}
+
 function showTodo() {
   todoApp.style.display = 'block';
   timerContainer.style.display = 'none';
-  clearInterval(timerInterval);
+  clearInterval(countdownInterval);
 }
+
 function showTimer() {
   todoApp.style.display = 'none';
   timerContainer.style.display = 'block';
-  startTimer();
+  resetCountdown();
 }
-function startTimer() {
-  if (!isTimerRunning) {
-      isTimerRunning = true;
-      startButton.disabled = true;
-      stopButton.disabled = false;
 
-      let seconds = 0;
-      let minutes = 0;
-      let hours = 0;
+function startCountdown() {
+  if (!isCountdownRunning) {
+    isCountdownRunning = true;
+    startCountdownButton.disabled = true;
+    stopCountdownButton.disabled = false;
+    resetCountdownButton.disabled = false;
 
-      timerInterval = setInterval(function () {
-          seconds++;
-          if (seconds === 60) {
-              seconds = 0;
-              minutes++;
-              if (minutes === 60) {
-                  minutes = 0;
-                  hours++;
-              }
-          }
+    var inputTime = parseCountdownInput(countdownInput.value);
+    var targetTime = new Date().getTime() + inputTime * 1000; // Calculate the target time
 
-          updateTimerDisplay(hours, minutes, seconds);
-      }, 1000);
+    countdownInterval = setInterval(function () {
+      var currentTime = new Date().getTime();
+      var remainingTime = targetTime - currentTime;
+
+      if (remainingTime <= 0) {
+        // Countdown has reached its target
+        isCountdownRunning = false;
+        clearInterval(countdownInterval);
+        startCountdownButton.disabled = false;
+        stopCountdownButton.disabled = true;
+        resetCountdownButton.disabled = true;
+        countdownInput.value = "";
+        updateCountdownDisplay(0);
+        return;
+      }
+
+      var hours = Math.floor(remainingTime / 3600000);
+      var minutes = Math.floor((remainingTime % 3600000) / 60000);
+      var seconds = Math.floor((remainingTime % 60000) / 1000);
+
+      updateCountdownDisplay(hours, minutes, seconds);
+    }, 1000);
   }
 }
 
-function stopTimer() {
-  isTimerRunning = false;
-  clearInterval(timerInterval);
-  startButton.disabled = false;
-  stopButton.disabled = true;
+function stopCountdown() {
+  isCountdownRunning = false;
+  clearInterval(countdownInterval);
+  startCountdownButton.disabled = false;
+  stopCountdownButton.disabled = true;
 }
 
-function updateTimerDisplay(hours = 0, minutes = 0, seconds = 0) {
+function resetCountdown() {
+  isCountdownRunning = false;
+  clearInterval(countdownInterval);
+  startCountdownButton.disabled = false;
+  stopCountdownButton.disabled = true;
+  resetCountdownButton.disabled = true;
+  countdownInput.value = "";
+  updateCountdownDisplay(0, 0, 0); // Reset the display to "00:00:00"
+}
+
+
+function parseCountdownInput(input) {
+  const parts = input.split(":");
+  const hours = parseInt(parts[0]) || 0;
+  const minutes = parseInt(parts[1]) || 0;
+  const seconds = parseInt(parts[2]) || 0;
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+function updateCountdownDisplay(hours, minutes, seconds) {
   const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
   timerDisplay.textContent = formattedTime;
 }
@@ -71,6 +104,8 @@ function updateTimerDisplay(hours = 0, minutes = 0, seconds = 0) {
 function pad(value) {
   return value.toString().padStart(2, '0');
 }
+
+// Your other functions and event listeners...
 
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");

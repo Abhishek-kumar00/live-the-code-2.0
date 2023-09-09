@@ -23,7 +23,7 @@ Contributing
 We welcome contributions from the community. If you'd like to contribute to Be Better, please follow our github profile 
 
 Contact
-If you have any questions, feedback, or suggestions, please feel free to reach out to us at your-abhpinran98@gmail.com,yashmanocha19@gmail.com,anantatudy480@gmail.com
+If you have any questions, feedback, or suggestions, please feel free to reach out to us at your-abhpinran98@gmail.com,yashmanocha19@gmail.com,jain.anant609@gmail.com 
 
 Demo
 Check out the live demo of Be Better here.

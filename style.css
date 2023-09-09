@@ -211,7 +211,7 @@ ul li span:hover {
 }
 
 .logo {
-  max-width: 12%;
+  max-width: 7%; /*logo height*/
   display: center;
   height: auto; 
   margin-top: 20px; 

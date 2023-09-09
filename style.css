@@ -5,7 +5,7 @@
 }
 
 body {
-  background: rgb(32, 31, 31);
+  background: rgb(26, 26, 26);
   display: flex;
   justify-content: center;
 }
@@ -13,18 +13,19 @@ body {
 /* Your existing CSS */
 
 .butn-box {
-  width: 400px; /* Adjust width for better symmetry */
-  margin: 30px auto;
+  width: 350px; /* Adjust width for better symmetry */
+  margin: 30px auto ;
   position: relative;
   border-radius: 40px;
   background: #ffffff;
   display: flex;
   justify-content: space-between; /* Distribute buttons evenly */
-  align-items: center; /* Vertically center the buttons and indicator */
+  align-items: center;
+ /* Vertically center the buttons and indicator */
 }
 
 .toggel-btn {
-  flex: 1; /* Distribute buttons evenly */
+  flex: 1; 
   padding: 10px;
   cursor: pointer;
   background: transparent;
@@ -34,17 +35,17 @@ body {
   text-align: center;
   z-index: 2;
   color: #000;
-  border-radius: 0; /* Remove border radius for a more symmetric look */
-  transition: background-color 0.3s; /* Add transition for a smooth effect */
+  border-radius: 0;
+  transition: background-color 0.3s; 
 }
 
 #btn {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 120px; /* Adjust width for better symmetry */
-  background: #097383;
-  border-radius: 40px; /* Match the border radius of the button container */
+  width: 120px; 
+  background: #77d4fc;
+  border-radius: 40px; 
   transition: 0.3s;
   z-index: 1;
 }
@@ -115,7 +116,7 @@ button {
   border-radius: 40px;
   border: none;
   outline: none;
-  background: #8ec905fc;
+  background: #0718c4;
   color: #fff;
   cursor: pointer;
 }
@@ -206,5 +207,18 @@ ul li span:hover {
 }
 
 #countdown-input:focus {
-  border-color: #007bff; /* Change the border color when focused */
+  border-color: #007bff;
+}
+
+.logo {
+  max-width: 12%;
+  display: center;
+  height: auto; 
+  margin-top: 20px; 
+}
+.logo-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 10vh; 
 }

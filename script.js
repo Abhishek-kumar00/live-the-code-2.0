@@ -15,12 +15,12 @@ function leftClick() {
 }
 
 function midClick() {
-  btn.style.left = '140px';
+  btn.style.left = '115px';
   showTimer();
 }
 
 function rightClick() {
-  btn.style.left = '280px';
+  btn.style.left = '230px';
 }
 
 function showTodo() {

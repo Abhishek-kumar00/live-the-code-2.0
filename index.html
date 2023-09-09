@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="form-box">
-      <div class="logo-container">
-      <img src="be-better-high-resolution-logo-color-on-transparent-background (1).png" alt="logo" class="logo">
-      </div>
       <div class="butn-box">
           <div id="btn"></div>
           <button type="button" class="toggel-btn" onclick="leftClick()">To Do</button>
@@ -46,7 +43,16 @@
           </div>
           <div id="timer">00:00:00</div>
         </div>
-        
+        <div class="journal-container" id="journal-container" style="display: none;">
+            <h2>Journal</h2>
+            <textarea id="journal-entry" placeholder="Write your journal entry here"></textarea>
+            <button onclick="addJournalEntry()">Add Entry</button>
+            <div id="journal-entries">
+              <!-- Journal entries will be displayed here -->
+            </div>
+          </div>
+          
+          
   </div>
 
     <script src="script.js"></script>

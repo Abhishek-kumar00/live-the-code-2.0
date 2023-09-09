@@ -10,17 +10,17 @@ var countdownInterval;
 var isCountdownRunning = false;
 
 function leftClick() {
-  btn.style.left = 0;
+  btn.style.left = '0px';
   showTodo();
 }
 
 function midClick() {
-  btn.style.left = '65px';
+  btn.style.left = '115px';
   showTimer();
 }
 
 function rightClick() {
-  btn.style.left = '140px';
+  btn.style.left = '230px';
 }
 
 function showTodo() {

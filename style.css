@@ -50,7 +50,6 @@ body {
   z-index: 1;
 }
 
-
 .content {
   width: 100%;
   max-width: 540px;
@@ -221,4 +220,59 @@ ul li span:hover {
   justify-content: center; 
   align-items: center; 
   height: 10vh; 
+}
+
+/* Add these styles to your existing CSS or create a new section for journal */
+#journal-container {
+  display: none;
+  width: 100%;
+  max-width: 540px;
+  background: #fff;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 10px;
+}
+
+#journal-entry {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  margin-top: 10px;
+}
+
+#journal-entry::placeholder {
+  color: #aaa;
+}
+
+#journal-entries {
+  margin-top: 10px;
+}
+
+.journal-entry {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+.journal-entry p {
+  margin: 0;
+}
+
+.journal-entry button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #ff6666;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.journal-entry button:hover {
+  background-color: #ff3333;
 }

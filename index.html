@@ -37,7 +37,9 @@
           </ul>
         </div>
         <div class="timer-container" id="timer-container">
-          <h2>Timer</h2>
+          <h2>Timer
+            <img src="pngwing.com.png" alt="timer">
+          </h2>
           <input type="text" id="countdown-input" placeholder="Enter countdown time (HH:MM:SS)">
           <div class="timer-controls">
             <button id="start-countdown-button" onclick="startCountdown()">Start</button>
@@ -45,6 +47,14 @@
             <button id="reset-countdown-button" onclick="resetCountdown()">Reset</button>
           </div>
           <div id="timer">00:00:00</div>
+        </div>
+        <div class="journal-container" id="journal-container" style="display: none;">
+          <h2>Journal</h2>            
+          <textarea id="journal-entry" placeholder="Write your journal entry here"></textarea>
+          <button onclick="addJournalEntry()">Add Entry</button>
+          <div id="journal-entries">
+            <!-- Journal entries will be displayed here -->
+          </div>
         </div>
         
   </div>

@@ -10,18 +10,25 @@ var countdownInterval;
 var isCountdownRunning = false;
 
 function leftClick() {
-  btn.style.left = '0px';
+  btn.style.left = '0';
   showTodo();
+  hideJournal(); // Hide the journal section when Timer tab is clicked
 }
+
 
 function midClick() {
   btn.style.left = '115px';
   showTimer();
+  hideJournal(); // Hide the journal section when Timer tab is clicked
+
 }
 
 function rightClick() {
   btn.style.left = '230px';
+  showJournal();
 }
+
+
 
 function showTodo() {
   todoApp.style.display = 'block';
@@ -142,5 +149,115 @@ function saveData() {
 function showTask() {
   listContainer.innerHTML = localStorage.getItem("data");
 }
+// Add these variables to your existing code
+var journalContainer = document.getElementById('journal-container');
+var journalEntryInput = document.getElementById('journal-entry');
+var journalEntries = document.getElementById('journal-entries');
+
+// Function to add a journal entry
+function addJournalEntry() {
+  var entryText = journalEntryInput.value;
+  
+  if (entryText.trim() === '') {
+    alert('Please write an entry before adding it to your journal.');
+    return;
+  }
+
+  var currentTime = new Date();
+  var formattedTime = currentTime.toLocaleString();
+
+  var entryElement = document.createElement('div');
+  entryElement.classList.add('journal-entry');
+  entryElement.innerHTML = `<p>${formattedTime}</p><p>${entryText}</p><button onclick="deleteJournalEntry(this)">Delete</button>`;
+  journalEntries.appendChild(entryElement);
+
+  // Clear the input field
+  journalEntryInput.value = '';
+}
+
+// Function to delete a journal entry
+function deleteJournalEntry(entryElement) {
+  entryElement.parentElement.remove();
+}
+// Add these variables to your existing code
+var journalContainer = document.getElementById('journal-container');
+var todoApp = document.querySelector('.todo-app');
+var timerContainer = document.getElementById('timer-container');
+
+// Function to show the journal section and hide others
+function showJournal() {
+  journalContainer.style.display = 'block';
+  todoApp.style.display = 'none';
+  timerContainer.style.display = 'none';
+  resetCountdown(); // If you want to reset the timer when switching to the journal tab
+}
+// Add these variables to your existing code
+var journalContainer = document.getElementById('journal-container');
+var todoApp = document.querySelector('.todo-app');
+var timerContainer = document.getElementById('timer-container');
+
+// Function to show the journal section and hide others
+function showJournal() {
+  journalContainer.style.display = 'block';
+  todoApp.style.display = 'none';
+  timerContainer.style.display = 'none';
+  resetCountdown(); // If you want to reset the timer when switching to the journal tab
+}
+
+// Function to hide the journal section
+function hideJournal() {
+  journalContainer.style.display = 'none';
+}
+
+// Update the click event functions
+
+// Add these variables to your existing code
+var journalEntries = document.getElementById('journal-entries');
+var journalEntryInput = document.getElementById('journal-entry');
+
+// Load journal entries from localStorage when the page loads
+function loadJournalEntries() {
+  var storedEntries = localStorage.getItem('journalEntries');
+  if (storedEntries) {
+    journalEntries.innerHTML = JSON.parse(storedEntries);
+  }
+}
+
+// Function to add a journal entry
+function addJournalEntry() {
+  var entryText = journalEntryInput.value;
+
+  if (entryText.trim() === '') {
+    alert('Please write an entry before adding it to your journal.');
+    return;
+  }
+
+  var currentTime = new Date();
+  var formattedTime = currentTime.toLocaleString();
+
+  var entryElement = document.createElement('div');
+  entryElement.classList.add('journal-entry');
+  entryElement.innerHTML = `<p>${formattedTime}</p><p>${entryText}</p><button onclick="deleteJournalEntry(this)">Delete</button>`;
+  journalEntries.appendChild(entryElement);
+
+  // Clear the input field
+  journalEntryInput.value = '';
+
+  // Save the updated entries to localStorage
+  localStorage.setItem('journalEntries', JSON.stringify(journalEntries.innerHTML));
+}
+
+// Function to delete a journal entry
+function deleteJournalEntry(entryElement) {
+  entryElement.parentElement.remove();
+
+  // Save the updated entries to localStorage after deleting
+  localStorage.setItem('journalEntries', JSON.stringify(journalEntries.innerHTML));
+}
+
+// Load journal entries when the page loads
+loadJournalEntries();
+
 showTask();
 showTodo();
+

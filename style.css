@@ -72,7 +72,7 @@ body {
   background: #fff;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
-  border-radius: 10px;
+  border-radius: 20px;
   display: none; 
 }
 
@@ -107,6 +107,13 @@ input {
   background: transparent;
   padding: 10px;
   font-size: 14px;
+  border:none;
+  outline: none;
+}
+#countdown-input{
+  border:none;
+  outline: none;
+
 }
 
 button {

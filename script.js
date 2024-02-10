@@ -254,6 +254,101 @@ function deleteJournalEntry(entryElement) {
   // Save the updated entries to localStorage after deleting
   localStorage.setItem('journalEntries', JSON.stringify(journalEntries.innerHTML));
 }
+// Function to play sound when timer ends
+function playTimerEndSound() {
+  var audio = document.getElementById("timer-end-sound");
+  audio.play();
+}
+
+// Modify your existing timer function to play sound when timer ends
+function updateCountdownDisplay(hours, minutes, seconds) {
+  const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  timerDisplay.textContent = formattedTime;
+
+  // If timer reaches zero, play the sound
+  if (hours === 0 && minutes === 0 && seconds === 0) {
+      playTimerEndSound();
+  }
+}
+var startCountdownButton = document.getElementById('start-countdown-button');
+var stopCountdownButton = document.getElementById('stop-countdown-button');
+var resetCountdownButton = document.getElementById('reset-countdown-button');
+var countdownInterval;
+
+// Function to start the countdown
+function startCountdown() {
+    // Get the input time
+    var inputTime = parseCountdownInput(countdownInput.value);
+    
+    // Check if input time is valid
+    if (inputTime > 0) {
+        // Disable start button, enable stop and reset buttons
+        startCountdownButton.disabled = true;
+        stopCountdownButton.disabled = false;
+        resetCountdownButton.disabled = false;
+        
+        // Start the countdown
+        countdownInterval = setInterval(function() {
+            inputTime--;
+            if (inputTime <= 0) {
+                // Countdown finished, stop the interval
+                clearInterval(countdownInterval);
+                // Play timer end sound
+                playTimerEndSound();
+                // Enable start button
+                startCountdownButton.disabled = false;
+            }
+            updateCountdownDisplay(inputTime);
+        }, 1000);
+    }
+}
+
+// Function to stop the countdown
+function stopCountdown() {
+    clearInterval(countdownInterval);
+    // Enable start button, disable stop and reset buttons
+    startCountdownButton.disabled = false;
+    stopCountdownButton.disabled = true;
+    resetCountdownButton.disabled = true;
+}
+
+// Function to reset the countdown
+function resetCountdown() {
+    clearInterval(countdownInterval);
+    // Enable start button, disable stop and reset buttons
+    startCountdownButton.disabled = false;
+    stopCountdownButton.disabled = true;
+    resetCountdownButton.disabled = true;
+    // Clear countdown input and display
+    countdownInput.value = '';
+    updateCountdownDisplay(0);
+}
+
+// Function to parse countdown input
+function parseCountdownInput(input) {
+    const parts = input.split(":");
+    const hours = parseInt(parts[0]) || 0;
+    const minutes = parseInt(parts[1]) || 0;
+    const seconds = parseInt(parts[2]) || 0;
+    return hours * 3600 + minutes * 60 + seconds;
+}
+
+// Function to update countdown display
+function updateCountdownDisplay(timeInSeconds) {
+    const hours = Math.floor(timeInSeconds / 3600);
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = timeInSeconds % 60;
+    const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    timerDisplay.textContent = formattedTime;
+}
+
+// Function to play timer end sound
+function playTimerEndSound() {
+    var audio = document.getElementById("timer-end-sound");
+    audio.play();
+}
+
+
 
 // Load journal entries when the page loads
 loadJournalEntries();
